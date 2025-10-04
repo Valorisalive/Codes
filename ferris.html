@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rotating Ferris Wheel with Independent Cabins</title>
+<style>
+  body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    margin: 0;
+  }
+  .wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    animation: spin 10s linear infinite;
+  }
+  .wheel {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #000;
+    border-radius: 50%;
+  }
+  /* Spokes */
+  .spoke {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 130px; /* length so it reaches cabins */
+    height: 2px;
+    background: #000;
+    transform-origin: left center;
+  }
+  /* Position spokes at multiples of 60 degrees */
+  .spoke:nth-child(1)  { transform: rotate(0deg); }
+  .spoke:nth-child(2)  { transform: rotate(60deg); }
+  .spoke:nth-child(3)  { transform: rotate(120deg); }
+  .spoke:nth-child(4)  { transform: rotate(180deg); }
+  .spoke:nth-child(5)  { transform: rotate(240deg); }
+  .spoke:nth-child(6)  { transform: rotate(300deg); }
+  
+  /* Cabin containers for positioning */
+  .cabin-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0; 
+    height: 0;
+    transform-origin: 0 0;
+  }
+  
+  /* Position each cabin container by rotation and translation */
+  .cabin-container:nth-child(7)  { transform: rotate(0deg) translate(130px) rotate(0deg); }
+  .cabin-container:nth-child(8)  { transform: rotate(60deg) translate(130px) rotate(0deg); }
+  .cabin-container:nth-child(9)  { transform: rotate(120deg) translate(130px) rotate(0deg); }
+  .cabin-container:nth-child(10) { transform: rotate(180deg) translate(130px) rotate(0deg); }
+  .cabin-container:nth-child(11) { transform: rotate(240deg) translate(130px) rotate(0deg); }
+  .cabin-container:nth-child(12) { transform: rotate(300deg) translate(130px) rotate(0deg); }
+  
+  /* Cabins */
+  .cabin {
+    width: 40px;
+    height: 40px;
+    background: #b03a0e;
+    border-radius: 5px;
+    margin-left: -20px; /* center cabin horizontally */
+    margin-top: -20px;  /* center cabin vertically */
+    animation: counterSpin 10s linear infinite;
+  }
+
+  /* Animations */
+  @keyframes spin {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+  }
+  @keyframes counterSpin {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(-360deg);}
+  }
+</style>
+</head>
+<body>
+  <div class="wheel-container">
+    <div class="wheel">
+      <!-- Spokes -->
+      <div class="spoke"></div>
+      <div class="spoke"></div>
+      <div class="spoke"></div>
+      <div class="spoke"></div>
+      <div class="spoke"></div>
+      <div class="spoke"></div>
+
+      <!-- Cabins inside their containers -->
+      <div class="cabin-container"><div class="cabin"></div></div>
+      <div class="cabin-container"><div class="cabin"></div></div>
+      <div class="cabin-container"><div class="cabin"></div></div>
+      <div class="cabin-container"><div class="cabin"></div></div>
+      <div class="cabin-container"><div class="cabin"></div></div>
+      <div class="cabin-container"><div class="cabin"></div></div>
+    </div>
+  </div>
+</body>
+</html>
