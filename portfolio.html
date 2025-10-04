@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shriniwas Vanjare | Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f8;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    a { text-decoration: none; color: inherit; }
+    nav {
+      background-color: #0D1B2A;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #00A8E8;
+    }
+    nav ul { display: flex; gap: 25px; }
+    nav ul li {
+      list-style: none;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+    nav ul li:hover { color: #00A8E8; transform: scale(1.1); }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(135deg, #0D1B2A, #1B263B);
+      color: #fff;
+    }
+    header .intro {
+      max-width: 600px;
+      text-align: center;
+      margin: 20px;
+    }
+    header h1 { font-size: 3rem; margin-bottom: 15px; }
+    header p { font-size: 1.2rem; margin-bottom: 25px; color: #B0C4DE; }
+    header .btn {
+      padding: 12px 25px;
+      background-color: #00A8E8;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    header .btn:hover { background-color: #0077B6; transform: scale(1.05); }
+
+    header img.profile-pic {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 20px;
+      border: 5px solid #00A8E8;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    header img.hero-3d {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      margin: 20px;
+      border-radius: 20px;
+      border: 3px solid #00A8E8;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+    section h2 { text-align: center; font-size: 2.2rem; margin-bottom: 40px; color: #0D1B2A; }
+
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+    .project-card {
+      background-color: #1B263B;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card:hover { transform: translateY(-10px); box-shadow: 0 12px 24px rgba(0,0,0,0.4); background-color: #0D1B2A; }
+    .project-card h3 { font-size: 1.4rem; margin-bottom: 10px; color: #00A8E8; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+    .tech-stack span { background-color: #0077B6; color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; }
+    .project-links a {
+      margin-right: 10px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 500;
+      background-color: #00A8E8;
+      color: #fff;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .project-links a:hover { background-color: #0077B6; transform: scale(1.05); }
+
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      background-color: #f0f4f8;
+      border-radius: 12px;
+      padding: 40px;
+      color: #0D1B2A;
+    }
+    .about img {
+      width: 250px;
+      height: 250px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 4px solid #00A8E8;
+    }
+    .about p { max-width: 700px; font-size: 1.1rem; line-height: 1.6; }
+
+    .contact .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.1rem;
+      color: #0D1B2A;
+    }
+    .contact .contact-info a {
+      color: #00A8E8;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .contact .contact-info a:hover { color: #0077B6; transform: scale(1.05); }
+
+    footer {
+      background-color: #0D1B2A;
+      color: #fff;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+      background: linear-gradient(90deg, #0D1B2A, #1B263B);
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; padding: 60px 20px 40px; }
+      header h1 { font-size: 2.5rem; }
+      .about { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      nav { padding: 12px 20px; }
+      header h1 { font-size: 2rem; }
+      .project-links a { margin-bottom: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Shriniwas Vanjare</div>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFwmOYwbNlK2CJRP1i3NUnoB3biz0hpK2JvA&s" alt="Profile Picture" class="profile-pic">
+    <div class="intro">
+      <h1>Shriniwas Vanjare</h1>
+      <p>Full-Stack Developer | Building Scalable and Modern Web Applications</p>
+      <a href="#contact" class="btn">Hire Me</a>
+    </div>
+    <img src="https://media.sketchfab.com/models/bfcf52aaf1f84200b1ef71bd16150518/thumbnails/3ea3dc6aea08497498f96d66ec60740a/7fee51366cb342b281bab4c2cfce3465.jpeg" alt="3D Illustration" class="hero-3d">
+  </header>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Hello World in Java</h3>
+        <div class="tech-stack"><span>Java</span></div>
+        <div class="project-links"><a href="#">GitHub</a></div>
+      </div>
+      <div class="project-card">
+        <h3>Hello World in C++</h3>
+        <div class="tech-stack"><span>C++</span></div>
+        <div class="project-links"><a href="#">GitHub</a></div>
+      </div>
+      <div class="project-card">
+        <h3>Hello World in Python</h3>
+        <div class="tech-stack"><span>Python</span></div>
+        <div class="project-links"><a href="#">GitHub</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <img src="https://wallup.net/wp-content/uploads/2018/09/26/209382-Neon_Genesis_Evangelion-Eva_Unit_06.jpg" alt="About Me Picture">
+    <p>
+      I am a passionate full-stack developer specializing in building modern, scalable web applications. I enjoy learning new technologies, solving complex problems, and contributing to open-source projects.
+    </p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:shriniwasvanjare@gmail.com">shriniwasvanjare@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/Valorisalive" target="_blank">github.com/Valorisalive</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/shriniwas-vanjare-57b0a6321/" target="_blank">linkedin.com/in/shriniwas-vanjare-57b0a6321/</a></p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Shriniwas Vanjare. All rights reserved.
+  </footer>
+
+</body>
+</html>
+
