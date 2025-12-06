@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://images3.alphacoders.com/715/thumb-1920-715067.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      background: rgba(25, 30, 60, 0.75);
+      backdrop-filter: blur(6px);
+      color: white;
+      padding: 18px 25px;
+      text-align: left;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .task-input {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .task-input input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #d0d7e2;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      padding: 12px 18px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    button:hover {
+      background: #1e4ecf;
+    }
+
+    .task {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      padding: 18px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .task-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .task-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #111827;
+    }
+
+    .status {
+      width: fit-content;
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .pending { background: #fde047; color: #7c6a00; }
+    .ongoing { background: #38bdf8; color: #0a5670; }
+    .completed { background: #86efac; color: #14532d; }
+
+    .task select {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+    }
+  .header-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 120px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .title {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <span class="title">TaskFlow</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="task-input">
+      <input type="text" id="taskText" placeholder="Enter task description..." />
+      <button onclick="addTask()">Add Task</button>
+    </div>
+
+    <div id="taskList"></div>
+  </div>
+
+  <script>
+    function addTask() {
+      const text = document.getElementById('taskText').value;
+      if (!text.trim()) return;
+
+      const taskList = document.getElementById('taskList');
+
+      const taskDiv = document.createElement('div');
+      taskDiv.className = 'task';
+
+      const left = document.createElement('div');
+      left.className = 'task-left';
+
+      const title = document.createElement('span');
+      title.className = 'task-title';
+      title.textContent = text;
+
+      const statusLabel = document.createElement('span');
+      statusLabel.className = 'status pending';
+      statusLabel.textContent = 'Pending';
+
+      left.appendChild(title);
+      left.appendChild(statusLabel);
+
+      const statusSelect = document.createElement('select');
+      ['pending','ongoing','completed'].forEach(s => {
+        const option = document.createElement('option');
+        option.value = s;
+        option.textContent = s.charAt(0).toUpperCase() + s.slice(1);
+        statusSelect.appendChild(option);
+      });
+
+      statusSelect.onchange = function() {
+        statusLabel.textContent = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+        statusLabel.className = 'status ' + this.value;
+      };
+
+      taskDiv.appendChild(left);
+      taskDiv.appendChild(statusSelect);
+
+      taskList.appendChild(taskDiv);
+      document.getElementById('taskText').value = '';
+    }
+  </script>
+</body>
+</html>
+
+
+
